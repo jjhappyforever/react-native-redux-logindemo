@@ -24,7 +24,6 @@ class Login extends Component{
     super(props);
 
     this.state={
-
     }
 
     this.login=this.login.bind(this);
@@ -42,21 +41,17 @@ class Login extends Component{
 
    login(){
 
-     const { state, actions } = this.props;
-
      if(!this.state.phone||!this.state.password){
        alert('用户名或密码不能为空！');
      }else{
        this.refs.modal.open();//loading 状态
-       actions.login({'phone':this.state.phone,'password':this.state.password});//dispath 登陆
+       this.props.actions.login({'phone':this.state.phone,'password':this.state.password});//dispath 登陆
      }
    }
 
    //该方法首次不会执行，如果返回false，则reduer不会执行，，
    shouldComponentUpdate(nextProps,nextState){
-     console.log(nextProps);
      const {isLoggedIn,navigator}=nextProps;
-     console.log('isLoggedIn='+isLoggedIn);
       if(isLoggedIn){
         this.setState({phone:'',password:''});
 
@@ -69,8 +64,7 @@ class Login extends Component{
    }
 
    render(){
-
-     console.log('render...');
+    console.log('render...');
      return(
       <View style={{flex:1}}>
       <View style={{padding:20,marginTop:50}}>

@@ -16,5 +16,7 @@ export default function configureStore(initialState){
   //创建store
   const store=createSoreWithMiddleware(reducer,initialState);
 
+  console.log(store);
+
   return store;
 }

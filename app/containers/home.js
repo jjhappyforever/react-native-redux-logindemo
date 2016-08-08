@@ -23,11 +23,16 @@ class Home extends Component{
   }
 
   logout(){
+    const {dispatch,user,navigator}=this.props;
+    console.log(this.props);
 
+    //调用logout方法
+    dispatch(actionCreators.logout());
+
+    navigator.pop();
   }
 
    render(){
-    console.log(this.props.user);
      return(
       <View style={{padding:30,marginTop:30}}>
       <Text style={{fontSize:18}}>手机号:{this.props.user.phone} 登陆成功！！！</Text>
@@ -35,7 +40,6 @@ class Home extends Component{
        underlayColor='#000000' onPress={this.logout}>
       <Text style={{fontSize:16,color:'#fff'}}>注销</Text>
       </TouchableHighlight>
-
       </View>
      );
    }
@@ -66,7 +70,6 @@ const styles =StyleSheet.create({
 
 //根据全局state返回当前页面所需要的信息
 function mapStateToProps(state){
-  console.log(state);
   return{
     isLoggedIn:state.user.isLoggedIn,
     user:state.user.user,
